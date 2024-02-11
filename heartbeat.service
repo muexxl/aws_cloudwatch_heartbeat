@@ -1,0 +1,14 @@
+[Unit]
+Description=Heartbeat Service to AWS CloudWatch
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ethereum
+ExecStart=/usr/local/bin/send_heartbeat.sh
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
